@@ -33,7 +33,7 @@ The `Smart-Air.py` file is a web application written with **Streamlit**. This ap
 ## Usage
 To use the Air-Smart-Controller project, follow these steps:
 
-Clone the repository to your local machine.
-Refer to the demo.pdf for a demonstration of the project's functionality.
-For a deeper understanding of the project and its background, consult the Air-Smart-Controller-Report.pdf.
-Explore the codebase to view implementation details and make any necessary modifications.
+- Clone the repository to your local machine.
+- Refer to the demo.pdf for a demonstration of the project's functionality.
+- For a deeper understanding of the project and its background, consult the Air-Smart-Controller-Report.pdf.
+- Explore the codebase to view implementation details and make any necessary modifications.

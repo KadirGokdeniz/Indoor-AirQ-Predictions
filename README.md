@@ -2,11 +2,11 @@
 
 Indoor air quality directly affects the quality of life for everyone. The most advanced systems for monitoring air quality rely on automation, which processes data in real-time and responds accordingly. However, these systems also have potential issues that can negatively impact the user experience:
 
-Incorrect data readings due to sensor malfunctions,
+- Incorrect data readings due to sensor malfunctions,
 
-The system's inability to adapt to short-term changes in user preferences,
+- The system's inability to adapt to short-term changes in user preferences,
 
-Lack of foresight in case of potential disasters.
+- Lack of foresight in case of potential disasters.
 
 In this study, we aim to improve the predictability of automation systems by using deep neural networks to forecast future behaviors. By doing so, we expect to address some of these problems and make the system more adaptable and foresightful.
 

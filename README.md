@@ -18,7 +18,7 @@ The CN-OBEE dataset encompasses one year of data from a Chinese household. This 
 The `Air_Quality_Prediction.ipynb` file utilizes an RNN named GRU to generate 44 days of prediction data using this information. These prediction data cover temperature, pressure, and relative humidity. Prediction data are stored in the `predictions.csv` file.
 
 ## SmartAir Controller
-The `Smart-Air.py` file is a web application written with **Streamlit**. This application allows users to view prediction data and provides information on when the automation system will operate. Furthermore, users can suspend or schedule the system's future operations before they occur if desired. In automation pyramid, this can be accepted as a SCADA.
+The `Smart-Air.py` file is a web application written with **Streamlit**. This application allows users to view prediction data and provides information on when the automation system will operate. Furthermore, users can suspend or schedule the system's future operations before they occur if desired.
 
 <p align="center">
   <img src="1.png" alt="Image 1" width="800"/>

@@ -8,7 +8,7 @@ Indoor air quality directly affects the quality of life for everyone. The most a
 
 - Lack of foresight in case of potential disasters.
 
-In this study, we aim to improve the predictability of automation systems by using deep neural networks to forecast future behaviors. By doing so, we expect to address some of these problems and make the system more adaptable and foresightful.
+In this study, I aim to improve the predictability of automation systems by using deep neural networks to forecast future behaviors. By doing so, we expect to address some of these problems and make the system more adaptable and foresightful.
 
 ## CN-OBEE Dataset
 

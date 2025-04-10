@@ -10,6 +10,8 @@ Indoor air quality directly affects the quality of life for everyone. The most a
 
 In this study, I aim to improve the predictability of automation systems by using deep neural networks to forecast future behaviors. By doing so, we expect to address some of these problems and make the system more adaptable and foresightful.
 
+**Note:** This study was published on Journal of Artifical Intelligence and Human Sciences.
+
 ## CN-OBEE Dataset
 
 The CN-OBEE dataset encompasses one year of data from a Chinese household. This dataset includes data that affect the air quality of six different rooms. Additionally, it provides access to weather information outside the house. Moreover, the power file contains data on the energy consumption of electrical appliances used within the household.

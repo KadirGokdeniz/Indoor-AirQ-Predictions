@@ -1,4 +1,4 @@
-# 🏠 Indoor Air Quality Predictions & Smart Automation
+# Indoor Air Quality Predictions & Smart Automation
 
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)](https://streamlit.io/)
@@ -6,133 +6,90 @@
 
 A smart home project that predicts indoor air quality using deep learning models and manages automation systems with a user-friendly web interface.
 
-> **📄 Publication:** This study has been published in the [Journal of Artificial Intelligence and Human Sciences](https://dergipark.org.tr/tr/pub/jaihs).
+> **Publication:** This study has been published in the [Journal of Artificial Intelligence and Human Sciences](https://dergipark.org.tr/tr/pub/jaihs).
 
-## 🎬 Demo
+## Demo
 
 <p align="center">
   <img src="assets/animation.gif" alt="Application Demo" width="700"/>
 </p>
 
-*Interactive demo showing room selection, data visualization, and automation control*
+## Project Objective
 
-## 🎯 Project Objective
+Modern home automation systems face three fundamental challenges: incorrect data readings due to sensor malfunctions, difficulty adapting to short-term user preferences, and lack of foresight for potential issues. This project solves these problems by forecasting future air quality using **deep neural networks**.
 
-Modern home automation systems face three fundamental challenges:
-- ❌ Incorrect data readings due to sensor malfunctions
-- ❌ Difficulty adapting to short-term user preferences
-- ❌ Lack of foresight for potential issues
+## Features
 
-This project aims to solve these problems by forecasting future air quality using **deep neural networks**.
+**Prediction Models:** GRU (Gated Recurrent Unit), LSTM (Long Short-Term Memory), and BiGRU (Bidirectional GRU) for temperature, relative humidity, and air pressure predictions.
 
-## ✨ Features
+**Air-Smart Controller:** 44-day future predictions with 10-minute data intervals, separate monitoring for 5 rooms, automation mode control, and real-time visualization.
 
-### 🤖 Prediction Models
-- **GRU (Gated Recurrent Unit)** - Superior performance in temperature and pressure
-- **LSTM (Long Short-Term Memory)** - Strong in complex patterns
-- **BiGRU (Bidirectional GRU)** - Leader in air pressure predictions
+## Dataset
 
-### 📊 Prediction Parameters
-- 🌡️ **Temperature** (°C)
-- 💧 **Relative Humidity** (%)
-- 📈 **Air Pressure** (Pa)
+**CN-OBEE Dataset** - 1 year of minute-by-minute data from a residential unit in Beijing (May 31, 2021 - May 31, 2022). Includes temperature, humidity, pressure, occupancy data from 5 rooms, plus outdoor weather and energy consumption records.
 
-### 🖥️ Air-Smart Controller
-- 44-day future predictions
-- 10-minute data intervals
-- Separate monitoring for 5 different rooms
-- Automation mode control (Stop/Schedule)
-- Real-time data visualization
-
-## 📦 Dataset
-
-**CN-OBEE Dataset** - 1 year of data collected from a residential unit in Beijing
-- 📅 Period: May 31, 2021 - May 31, 2022
-- ⏱️ Frequency: Minute-by-minute recording
-- 🏠 Rooms: Cloakroom, Home Office, Kitchen, Living Room, Secondary Bedroom
-- 🌦️ Includes outdoor weather data and energy consumption records
-
-## 🛠️ Technologies
-
-```
-Python 3.8+
-├── Streamlit          # Web interface
-├── TensorFlow/Keras   # Deep learning models
-├── Pandas             # Data processing
-├── NumPy              # Numerical computations
-├── Altair             # Data visualization
-└── Scikit-learn       # Preprocessing and metrics
-```
-
-## 🚀 Installation
+## Installation
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/indoor-air-quality-prediction.git
-cd indoor-air-quality-prediction
-
-# Install required packages
+git clone https://github.com/KadirGokdeniz/Indoor-AirQ-Predicitons.git
+cd Indoor-AirQ-Predicitons
 pip install -r requirements.txt
-
-# Generate prediction data (optional)
-jupyter notebook Air_Quality_Prediction.ipynb
-
-# Run the application
-streamlit run Smart-Air.py
+streamlit run src/Smart-Air.py
 ```
 
-## 📈 Model Performance
+## Model Performance
 
-### Temperature Prediction (Average)
-| Model  | MAE (°C) | MSE | RMSE (°C) |
-|--------|----------|-----|-----------|
-| GRU    | 0.57     | 0.56| 2.98      |
-| BiGRU  | 0.60     | 0.58| 2.96      |
-| LSTM   | 0.93     | 1.54| 3.12      |
+### Temperature (Average)
+| Model  | MAE (°C) | RMSE (°C) |
+|--------|----------|-----------|
+| GRU    | 0.57     | 2.98      |
+| BiGRU  | 0.60     | 2.96      |
+| LSTM   | 0.93     | 3.12      |
 
-### Relative Humidity Prediction (Average)
-| Model  | MAE (%)  | MSE    | RMSE (%) |
-|--------|----------|--------|----------|
-| GRU    | 5.41     | 61.98  | 9.21     |
-| LSTM   | 6.14     | 60.24  | 9.02     |
-| BiGRU  | 6.98     | 79.13  | 10.01    |
+### Relative Humidity (Average)
+| Model  | MAE (%)  | RMSE (%) |
+|--------|----------|----------|
+| GRU    | 5.41     | 9.21     |
+| LSTM   | 6.14     | 9.02     |
+| BiGRU  | 6.98     | 10.01    |
 
-### Air Pressure Prediction (Average)
+### Air Pressure (Average)
 | Model  | MAE (hPa) | RMSE (hPa) |
 |--------|-----------|------------|
 | BiGRU  | 578.48    | 1,057.83   |
 | GRU    | 604.49    | 1,089.11   |
 | LSTM   | 609.26    | 1,089.06   |
 
-## 💡 Key Findings
+## Key Findings
 
-1. **GRU model** is overall the most balanced and high-performing model
-2. **Room occupancy frequency** significantly affects prediction accuracy
-3. High-occupancy rooms (kitchen, living room) yield better prediction results
-4. **BiGRU** excels in air pressure predictions
+1. GRU model provides the most balanced and high-performing results across parameters
+2. Room occupancy frequency significantly affects prediction accuracy
+3. High-occupancy rooms (kitchen, living room) yield better predictions
+4. BiGRU excels specifically in air pressure predictions
 
-## 📖 Usage
+## Usage
 
-```python
-# Start the Air-Smart Controller
-streamlit run Smart-Air.py
+```bash
+streamlit run src/Smart-Air.py
 ```
 
-1. Select a room from the interface that opens in your browser
-2. Choose the parameter you want to monitor (Temperature/Humidity/Pressure)
-3. Set the date and time range
+1. Select a room from the interface
+2. Choose the parameter to monitor (Temperature/Humidity/Pressure)
+3. Set date and time range
 4. Control automation mode (Get Stable/Schedule)
 5. Save changes
 
-## 📄 Documentation
+## Technologies
 
-- `demo.pdf` - Application usage demonstration
-- `Air-Smart-Controller-Report.pdf` - Detailed technical report
-- `Air_Quality_Prediction.ipynb` - Model training notebook
+Python 3.8+, Streamlit, TensorFlow/Keras, Pandas, NumPy, Altair, Scikit-learn
 
-## 🔬 Citation
+## Documentation
 
-If you use this work, please cite as follows:
+- `docs/Demo.pdf` - Application usage demonstration
+- `docs/Air-Smart-Report.pdf` - Detailed technical report
+- `notebooks/air_quality_predictions.ipynb` - Model training notebook
+
+## Citation
 
 ```bibtex
 @article{gokdeniz2024indoor,
@@ -146,23 +103,19 @@ If you use this work, please cite as follows:
 }
 ```
 
-## 🤝 Contributing
+## Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/NewFeature`)
-3. Commit your changes (`git commit -m 'Add new feature'`)
-4. Push to the branch (`git push origin feature/NewFeature`)
-5. Open a Pull Request
+Fork the repository, create a feature branch, commit changes, push to the branch, and open a Pull Request.
 
-## 📧 Contact
+## Contact
 
-**Kadir Gökdeniz** - kadirqokdeniz@hotmail.com  
-**Erkan Bostancı** - Ankara University, Computer Engineering Department
+**Kadir Gokdeniz** - kadirqokdeniz@hotmail.com  
+**Erkan Bostanci** - Ankara University, Computer Engineering Department
 
-## 📝 License
+## License
 
 This project is licensed under the MIT License.
 
 ---
 
-⭐ If you like this project, don't forget to give it a star!
+If you like this project, give it a star!

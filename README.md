@@ -113,7 +113,3 @@ Fork the repository, create a feature branch, commit changes, push to the branch
 ## License
 
 This project is licensed under the MIT License.
-
----
-
-If you like this project, give it a star!

@@ -8,14 +8,6 @@ A smart home project that predicts indoor air quality using deep learning models
 
 > **📄 Publication:** This study has been published in the [Journal of Artificial Intelligence and Human Sciences](https://dergipark.org.tr/tr/pub/jaihs).
 
-## 🎬 Demo
-
-<p align="center">
-  <img src="assets/animation.gif" alt="Application Demo" width="600" height="496"/>
-</p>
-
-*Interactive demo showing room selection, data visualization, and automation control*
-
 ## 🎯 Project Objective
 
 Modern home automation systems face three fundamental challenges:
@@ -24,6 +16,14 @@ Modern home automation systems face three fundamental challenges:
 - ❌ Lack of foresight for potential issues
 
 This project aims to solve these problems by forecasting future air quality using **deep neural networks**.
+
+## 🎬 Demo
+
+<p align="center">
+  <img src="assets/animation.gif" alt="Application Demo" width="600" height="496"/>
+</p>
+
+*Interactive demo showing room selection, data visualization, and automation control*
 
 ## ✨ Features
 

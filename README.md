@@ -18,11 +18,11 @@ A smart home project that predicts indoor air quality using deep learning models
 
 Modern home automation systems face three fundamental challenges: incorrect data readings due to sensor malfunctions, difficulty adapting to short-term user preferences, and lack of foresight for potential issues. This project solves these problems by forecasting future air quality using **deep neural networks**.
 
+## 🎯 Project Objective
+
 ## Features
 
 **Prediction Models:** GRU (Gated Recurrent Unit), LSTM (Long Short-Term Memory), and BiGRU (Bidirectional GRU) for temperature, relative humidity, and air pressure predictions.
-
-**Air-Smart Controller:** 44-day future predictions with 10-minute data intervals, separate monitoring for 5 rooms, automation mode control, and real-time visualization.
 
 ## Dataset
 

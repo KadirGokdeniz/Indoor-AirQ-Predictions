@@ -14,11 +14,9 @@ A smart home project that predicts indoor air quality using deep learning models
   <img src="assets/animation.gif" alt="Application Demo" width="700"/>
 </p>
 
-## Project Objective
+## 🎯 Project Objective
 
 Modern home automation systems face three fundamental challenges: incorrect data readings due to sensor malfunctions, difficulty adapting to short-term user preferences, and lack of foresight for potential issues. This project solves these problems by forecasting future air quality using **deep neural networks**.
-
-## 🎯 Project Objective
 
 ## Features
 

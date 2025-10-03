@@ -10,7 +10,9 @@ A smart home project that predicts indoor air quality using deep learning models
 
 ## 🎬 Demo
 
-![Application Demo](assets/animation.gif)
+<p align="center">
+  <img src="assets/animation.gif" alt="Application Demo" width="700"/>
+</p>
 
 *Interactive demo showing room selection, data visualization, and automation control*
 

@@ -4,6 +4,10 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)](https://streamlit.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+## 🎯 Project Objective
+
+Modern home automation systems face three fundamental challenges: incorrect data readings due to sensor malfunctions, difficulty adapting to short-term user preferences, and lack of foresight for potential issues. This project solves these problems by forecasting future air quality using **deep neural networks**.
+
 A smart home project that predicts indoor air quality using deep learning models and manages automation systems with a user-friendly web interface.
 
 > **Publication:** This study has been published in the [Journal of Artificial Intelligence and Human Sciences](https://dergipark.org.tr/tr/pub/jaihs).
@@ -13,10 +17,6 @@ A smart home project that predicts indoor air quality using deep learning models
 <p align="center">
   <img src="assets/animation.gif" alt="Application Demo" width="700"/>
 </p>
-
-## 🎯 Project Objective
-
-Modern home automation systems face three fundamental challenges: incorrect data readings due to sensor malfunctions, difficulty adapting to short-term user preferences, and lack of foresight for potential issues. This project solves these problems by forecasting future air quality using **deep neural networks**.
 
 ## Features
 

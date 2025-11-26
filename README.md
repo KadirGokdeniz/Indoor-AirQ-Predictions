@@ -3,7 +3,13 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)](https://streamlit.io/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-
+![TensorFlow](https://img.shields.io/badge/Deep%20Learning-TensorFlow%2FKeras-FF6F00?logo=tensorflow)
+![Model Type](https://img.shields.io/badge/Model%20Type-GRU%20%7C%20LSTM-00008B)
+![Prediction Type](https://img.shields.io/badge/Forecasting-Time%20Series-32CD32)
+![Dataset](https://img.shields.io/badge/Dataset-CN--OBEE%20(1Y)-A0522D)
+![Publication](https://img.shields.io/badge/Publication-JAIHS%202024-800080)
+![Metrics](https://img.shields.io/badge/Metrics-MAE%20%7C%20RMSE-B8860B)
+![Build](https://img.shields.io/badge/Status-Stable-brightgreen)
 ## 🎯 Project Objective
 
 Modern home automation systems face three fundamental challenges: incorrect data readings due to sensor malfunctions, difficulty adapting to short-term user preferences, and lack of foresight for potential issues. This project solves these problems by forecasting future air quality using **deep neural networks**.

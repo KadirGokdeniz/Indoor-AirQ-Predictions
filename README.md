@@ -1,10 +1,11 @@
 # Deep Learning for Indoor Air Quality Forecasting
 
-**Predicting temperature, humidity, and air pressure in smart buildings using GRU/LSTM networks - enabling proactive HVAC automation instead of reactive control.**
-
 [![Paper](https://img.shields.io/badge/Paper-JAIHS%202024-blue)](https://dergipark.org.tr/tr/pub/jaihs)
 [![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?logo=tensorflow)](https://tensorflow.org/)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-brightgreen)](https://indoor-airq-predictions-42.streamlit.app/)
+
+**Predicting temperature, humidity, and air pressure in smart buildings using GRU/LSTM networks - enabling proactive HVAC automation instead of reactive control.**
 
 ---
 

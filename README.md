@@ -35,31 +35,18 @@ Evaluated on **CN-OBEE dataset** (1 year, minute-level data, 5 rooms, Beijing re
 
 ## Approach
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────────┐
-│                           MACHINE LEARNING PIPELINE                                 │
-├─────────────────────────────────────────────────────────────────────────────────────┤
-│                                                                                     │
-│  ┌──────────────┐    ┌──────────────────┐    ┌──────────────┐    ┌──────────────┐   │
-│  │   DATA       │    │   DATA           │    │   MODEL      │    │   OUTPUT     │   │
-│  │  ACQUISITION │    │   PREPROCESSING  │    │   TRAINING   │    │   &          │   │
-│  ├──────────────┤    ├──────────────────┤    ├──────────────┤    │   DEPLOYMENT │   │
-│  │ • Temperature│    │ • Missing value  │    │ • GRU        │    ├──────────────┤   │
-│  │ • Humidity   │    │   imputation     │    │ • LSTM       │    │ • 1-day ahead│   │
-│  │ • Pressure   │    │   (median, <5.5%)│    │ • BiGRU      │    │   forecast   │   │
-│  │ • Occupancy  │────▶ • MinMaxScaler   │────▶ • Lookback: │────▶ • HVAC      │   │
-│  │ • Window     │    │   (0-1)          │    │   10 days    │    │   control    │   │
-│  │   state      │    │ • 10-min         │    │ • Step:      │    │   signals    │   │
-│  │ • Weather    │    │   resampling     │    │   30 min     │    │              │   │
-│  │              │    │                  │    │              │    │              │   │
-│  │ Frequency:   │    │                  │    │ Architecture:│    │              │   │
-│  │ 1-min        │    │                  │    │ Seq-to-One   │    │              │   │
-│  └──────────────┘    └──────────────────┘    └──────────────┘    └──────────────┘   │
-│                                                                                     │
-│  Dataset: CN-OBEE (Beijing, China)                    Period: May 2021 - May 2022   │
-│  8 features | Indoor environmental monitoring | Regression task                     │
-│                                                                                     │
-└─────────────────────────────────────────────────────────────────────────────────────┘
+```mermaid
+flowchart LR
+    A["🗂️ CN-OBEE Dataset"] --> B["⚙️ Preprocess Normalize + Resample"]
+    B --> C["🧠 GRU/LSTM/BiGRU Seq-to-One"]
+    C --> D["📈 1-Day Ahead Forecast"]
+    D --> E["🏠 HVAC Automation"]
+
+    style A fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
+    style B fill:#7c3aed,stroke:#5b21b6,color:#fff,stroke-width:2px
+    style C fill:#0ea5e9,stroke:#0369a1,color:#fff,stroke-width:2px
+    style D fill:#10b981,stroke:#047857,color:#fff,stroke-width:2px
+    style E fill:#f59e0b,stroke:#d97706,color:#fff,stroke-width:2px
 ```
 
 **Model comparison insight:** GRU consistently outperformed LSTM across temperature and humidity predictions while requiring fewer parameters — the simpler gating mechanism proves sufficient for this temporal granularity. BiGRU excels specifically in pressure forecasting where bidirectional context captures atmospheric patterns.
@@ -76,10 +63,6 @@ pip install -r requirements.txt
 # Run interactive demo
 streamlit run src/Smart-Air.py
 ```
-
-<p align="center">
-  <img src="assets/animation.gif" alt="Demo" width="600"/>
-</p>
 
 ---
 

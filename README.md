@@ -53,7 +53,7 @@ Evaluated on **CN-OBEE dataset** (1 year, minute-level data, 5 rooms, Beijing re
 │  │ • Weather    │    │   resampling     │    │   30 min     │    │              │   │
 │  │              │    │                  │    │              │    │              │   │
 │  │ Frequency:   │    │                  │    │ Architecture:│    │              │   │
-│  │ 1-min        │    │                  │    │ Seq-to-One  │    │              │    │
+│  │ 1-min        │    │                  │    │ Seq-to-One   │    │              │   │
 │  └──────────────┘    └──────────────────┘    └──────────────┘    └──────────────┘   │
 │                                                                                     │
 │  Dataset: CN-OBEE (Beijing, China)                    Period: May 2021 - May 2022   │

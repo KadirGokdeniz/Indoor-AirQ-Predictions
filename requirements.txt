@@ -1,0 +1,7 @@
+# Core dependencies for Smart-Air Streamlit App
+streamlit==1.28.0
+pandas==2.0.3
+altair==5.1.1
+
+# Implicit dependencies
+numpy>=1.24.0

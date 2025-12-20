@@ -1,97 +1,103 @@
-# Indoor Air Quality Predictions & Smart Automation
+# Deep Learning for Indoor Air Quality Forecasting
 
-[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
-[![Streamlit](https://img.shields.io/badge/Streamlit-1.0+-red.svg)](https://streamlit.io/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-![TensorFlow](https://img.shields.io/badge/Deep%20Learning-TensorFlow%2FKeras-FF6F00?logo=tensorflow)
-![Model Type](https://img.shields.io/badge/Model%20Type-GRU%20%7C%20LSTM-00008B)
-![Prediction Type](https://img.shields.io/badge/Forecasting-Time%20Series-32CD32)
-![Dataset](https://img.shields.io/badge/Dataset-CN--OBEE%20(1Y)-A0522D)
-![Publication](https://img.shields.io/badge/Publication-JAIHS%202024-800080)
-![Metrics](https://img.shields.io/badge/Metrics-MAE%20%7C%20RMSE-B8860B)
-![Build](https://img.shields.io/badge/Status-Stable-brightgreen)
-## 🎯 Project Objective
+**Predicting temperature, humidity, and air pressure in smart buildings using GRU/LSTM networks - enabling proactive HVAC automation instead of reactive control.**
 
-Modern home automation systems face three fundamental challenges: incorrect data readings due to sensor malfunctions, difficulty adapting to short-term user preferences, and lack of foresight for potential issues. This project solves these problems by forecasting future air quality using **deep neural networks**.
+[![Paper](https://img.shields.io/badge/Paper-JAIHS%202024-blue)](https://dergipark.org.tr/tr/pub/jaihs)
+[![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.x-orange?logo=tensorflow)](https://tensorflow.org/)
 
-A smart home project that predicts indoor air quality using deep learning models and manages automation systems with a user-friendly web interface.
+---
 
-> **Publication:** This study has been published in the [Journal of Artificial Intelligence and Human Sciences](https://dergipark.org.tr/tr/pub/jaihs).
+## Why This Matters
 
-## Demo
+Traditional HVAC systems are **reactive** — they respond after conditions become uncomfortable. This wastes energy and degrades occupant comfort. 
 
-<p align="center">
-  <img src="assets/animation.gif" alt="Application Demo" width="700"/>
-</p>
+This project demonstrates that **10-minute ahead forecasting** with deep learning enables:
+- **Proactive climate control** — adjust before discomfort occurs
+- **Energy optimization** — reduce unnecessary heating/cooling cycles
+- **Predictive maintenance** — detect sensor anomalies before they cause problems
 
-## Features
+---
 
-**Prediction Models:** GRU (Gated Recurrent Unit), LSTM (Long Short-Term Memory), and BiGRU (Bidirectional GRU) for temperature, relative humidity, and air pressure predictions.
+## Results
 
-## Dataset
+Evaluated on **CN-OBEE dataset** (1 year, minute-level data, 5 rooms, Beijing residential unit):
 
-**CN-OBEE Dataset** - 1 year of minute-by-minute data from a residential unit in Beijing (May 31, 2021 - May 31, 2022). Includes temperature, humidity, pressure, occupancy data from 5 rooms, plus outdoor weather and energy consumption records.
+| Parameter | Best Model | MAE | RMSE |
+|-----------|------------|-----|------|
+| Temperature | GRU | **0.57°C** | 2.98°C |
+| Humidity | GRU | **5.41%** | 9.21% |
+| Pressure | BiGRU | **578 hPa** | 1058 hPa |
 
-## Installation
+**Key insight:** Room occupancy patterns significantly impact prediction accuracy. High-traffic rooms (kitchen, living room) yield better predictions due to more consistent temporal patterns.
+
+---
+
+## Approach
+
+```
+┌─────────────────────────────────────────────────────────────────────────────────────┐
+│                           MACHINE LEARNING PIPELINE                                 │
+├─────────────────────────────────────────────────────────────────────────────────────┤
+│                                                                                     │
+│  ┌──────────────┐    ┌──────────────────┐    ┌──────────────┐    ┌──────────────┐   │
+│  │   DATA       │    │   DATA           │    │   MODEL      │    │   OUTPUT     │   │
+│  │  ACQUISITION │    │   PREPROCESSING  │    │   TRAINING   │    │   &          │   │
+│  ├──────────────┤    ├──────────────────┤    ├──────────────┤    │   DEPLOYMENT │   │
+│  │ • Temperature│    │ • Missing value  │    │ • GRU        │    ├──────────────┤   │
+│  │ • Humidity   │    │   imputation     │    │ • LSTM       │    │ • 1-day ahead│   │
+│  │ • Pressure   │    │   (median, <5.5%)│    │ • BiGRU      │    │   forecast   │   │
+│  │ • Occupancy  │────▶ • MinMaxScaler   │────▶ • Lookback: │────▶ • HVAC      │   │
+│  │ • Window     │    │   (0-1)          │    │   10 days    │    │   control    │   │
+│  │   state      │    │ • 10-min         │    │ • Step:      │    │   signals    │   │
+│  │ • Weather    │    │   resampling     │    │   30 min     │    │              │   │
+│  │              │    │                  │    │              │    │              │   │
+│  │ Frequency:   │    │                  │    │ Architecture:│    │              │   │
+│  │ 1-min        │    │                  │    │ Seq-to-One  │    │              │    │
+│  └──────────────┘    └──────────────────┘    └──────────────┘    └──────────────┘   │
+│                                                                                     │
+│  Dataset: CN-OBEE (Beijing, China)                    Period: May 2021 - May 2022   │
+│  8 features | Indoor environmental monitoring | Regression task                     │
+│                                                                                     │
+└─────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Model comparison insight:** GRU consistently outperformed LSTM across temperature and humidity predictions while requiring fewer parameters — the simpler gating mechanism proves sufficient for this temporal granularity. BiGRU excels specifically in pressure forecasting where bidirectional context captures atmospheric patterns.
+
+---
+
+## Quick Start
 
 ```bash
 git clone https://github.com/KadirGokdeniz/Indoor-AirQ-Predicitons.git
 cd Indoor-AirQ-Predicitons
 pip install -r requirements.txt
+
+# Run interactive demo
 streamlit run src/Smart-Air.py
 ```
 
-## Model Performance
+<p align="center">
+  <img src="assets/animation.gif" alt="Demo" width="600"/>
+</p>
 
-### Temperature (Average)
-| Model  | MAE (°C) | RMSE (°C) |
-|--------|----------|-----------|
-| GRU    | 0.57     | 2.98      |
-| BiGRU  | 0.60     | 2.96      |
-| LSTM   | 0.93     | 3.12      |
+---
 
-### Relative Humidity (Average)
-| Model  | MAE (%)  | RMSE (%) |
-|--------|----------|----------|
-| GRU    | 5.41     | 9.21     |
-| LSTM   | 6.14     | 9.02     |
-| BiGRU  | 6.98     | 10.01    |
+## Repository Structure
 
-### Air Pressure (Average)
-| Model  | MAE (hPa) | RMSE (hPa) |
-|--------|-----------|------------|
-| BiGRU  | 578.48    | 1,057.83   |
-| GRU    | 604.49    | 1,089.11   |
-| LSTM   | 609.26    | 1,089.06   |
-
-## Key Findings
-
-1. GRU model provides the most balanced and high-performing results across parameters
-2. Room occupancy frequency significantly affects prediction accuracy
-3. High-occupancy rooms (kitchen, living room) yield better predictions
-4. BiGRU excels specifically in air pressure predictions
-
-## Usage
-
-```bash
-streamlit run src/Smart-Air.py
+```
+├── notebooks/
+│   └── air_quality_predictions.ipynb   # Full training pipeline
+├── src/
+│   └── Smart-Air.py                    # Streamlit dashboard
+├── data/
+│   ├── raw/                            # Original CN-OBEE data
+│   └── processed/                      # Model predictions
+└── docs/
+    └── Air-Smart-Report.pdf            # Technical report
 ```
 
-1. Select a room from the interface
-2. Choose the parameter to monitor (Temperature/Humidity/Pressure)
-3. Set date and time range
-4. Control automation mode (Get Stable/Schedule)
-5. Save changes
-
-## Technologies
-
-Python 3.8+, Streamlit, TensorFlow/Keras, Pandas, NumPy, Altair, Scikit-learn
-
-## Documentation
-
-- `docs/Demo.pdf` - Application usage demonstration
-- `docs/Air-Smart-Report.pdf` - Detailed technical report
-- `notebooks/air_quality_predictions.ipynb` - Model training notebook
+---
 
 ## Citation
 
@@ -107,15 +113,11 @@ Python 3.8+, Streamlit, TensorFlow/Keras, Pandas, NumPy, Altair, Scikit-learn
 }
 ```
 
-## Contributing
+---
 
-Fork the repository, create a feature branch, commit changes, push to the branch, and open a Pull Request.
+## Author
 
-## Contact
+**Kadir Gokdeniz && Erkan Bostanci**  
+[LinkedIn](https://www.linkedin.com/in/kadir-g%C3%B6kdeniz-16573127a/) • [Google Scholar](https://yzib.com.tr/index.php/yzib/article/view/6) • kadirqokdeniz@hotmail.com
 
-**Kadir Gokdeniz** - kadirqokdeniz@hotmail.com  
-**Erkan Bostanci** - Ankara University, Computer Engineering Department
-
-## License
-
-This project is licensed under the MIT License.
+*Research conducted in collaboration with Ankara University, Computer Engineering Department.*

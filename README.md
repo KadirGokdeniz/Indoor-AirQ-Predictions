@@ -59,7 +59,6 @@ flowchart LR
 ```bash
 git clone https://github.com/KadirGokdeniz/Indoor-AirQ-Predicitons.git
 cd Indoor-AirQ-Predicitons
-pip install -r requirements.txt
 
 # Run interactive demo
 streamlit run src/Smart-Air.py

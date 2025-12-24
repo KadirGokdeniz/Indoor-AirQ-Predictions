@@ -24,11 +24,11 @@ This project demonstrates that **10-minute ahead forecasting** with deep learnin
 
 Evaluated on **CN-OBEE dataset** (1 year, minute-level data, 5 rooms, Beijing residential unit):
 
-| Parameter | Best Model | MAE | RMSE |
+| Parameter (Renormalized) | Best Model | MAE | RMSE |
 |-----------|------------|-----|------|
 | Temperature | GRU | **0.57°C** | 2.98°C |
 | Humidity | GRU | **5.41%** | 9.21% |
-| Pressure | BiGRU | **578 hPa** | 1058 hPa |
+| Pressure | BiGRU | **578 Pa** | 1058 Pa |
 
 **Key insight:** Room occupancy patterns significantly impact prediction accuracy. High-traffic rooms (kitchen, living room) yield better predictions due to more consistent temporal patterns.
 
@@ -40,7 +40,7 @@ Evaluated on **CN-OBEE dataset** (1 year, minute-level data, 5 rooms, Beijing re
 flowchart LR
     A["🗂️ CN-OBEE Dataset"] --> B["⚙️ Preprocess Normalize + Resample"]
     B --> C["🧠 GRU/LSTM/BiGRU Seq-to-One"]
-    C --> D["📈 1-Day Ahead Forecast"]
+    C --> D["📈 10 mins Ahead Forecast"]
     D --> E["🏠 HVAC Automation"]
 
     style A fill:#4f46e5,stroke:#3730a3,color:#fff,stroke-width:2px
